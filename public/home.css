@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.headbar {
+    flex: 1;
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+    flex: 4;
+    background-color: lightgray;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.sidebar {
+    background-color: white;
+    flex: 0 0 25%;
+}
+
+.roommate {
+    background-color: orange;
+    padding: 1%;
+}
+
+.roommate > * {
+    margin: 0 0 0 0;
+}
