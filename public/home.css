@@ -16,7 +16,7 @@ body {
 }
 
 .main {
-    flex: 4;
+    flex: 9;
     background-color: lightgray;
     height: 100%;
     width: 100%;
@@ -25,11 +25,10 @@ body {
 
 .sidebar {
     background-color: white;
-    flex: 0 0 25%;
+    flex: 0 0 20%;
 }
 
 .roommate {
-    background-color: orange;
     padding: 1%;
 }
 

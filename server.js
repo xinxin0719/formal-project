@@ -9,9 +9,9 @@ const io = new Server(server);
 app.use(express.static('public'));
 
 io.on('connection', (socket) => {
-    console.log('respons');
+    console.log('response');
 })
 
 server.listen(3000, () => {
-    console.log('succeed');
+    console.log('Visit http://localhost:3000 to join in.');
 })
