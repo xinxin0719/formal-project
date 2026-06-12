@@ -29,6 +29,10 @@ io.on('connection', (socket) => {
         }
         console.log(name);
     })
+
+    socket.on('disconnect', () => {
+        console.log('left');
+    })
 })
 
 server.listen(3000, () => {

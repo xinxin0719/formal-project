@@ -6,4 +6,5 @@ document.querySelector('.main').style.borderRadius = `${radius}px 0 / ${radius}p
 document.querySelector('.submit').addEventListener('click', () => {
     const name = document.querySelector('.name').value;
     socket.emit('nameInput', name);
+    location.href = "home.html?user=" + name;
 });
