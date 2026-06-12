@@ -16,10 +16,11 @@ body {
     border: 2px dotted darkblue;
     background-color: lightblue;
     flex: 0 0 40%;
-    height: 20%;
+    height: 16%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .main > * {
