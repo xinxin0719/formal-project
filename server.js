@@ -30,19 +30,19 @@ io.on('connection', (socket) => {
     socket.on('nameInput', (name) => {
         let users = JSON.parse(fs.readFileSync(fileUrl, 'utf-8'));
         let user = users.find(item => item.name === name);
-        if (user) {
-
-        } else {
+        if (!user) {
             users.push({ name: name});
             fs.writeFileSync(fileUrl, JSON.stringify(users, null, 2))
         }
     })
 
     socket.on('disconnect', () => {
-        let users = JSON.parse(fs.readFileSync(fileUrl, 'utf-8'));
-        let user = users.filter(item => item.name !== socket.userName);
-        fs.writeFileSync(fileUrl, JSON.stringify(user, null, 2));
-        console.log(`Member ${socket.userName} left.`);
+        if (socket.handshake.query.page !== '/') {
+            let users = JSON.parse(fs.readFileSync(fileUrl, 'utf-8'));
+            let user = users.filter(item => item.name !== socket.userName);
+            fs.writeFileSync(fileUrl, JSON.stringify(user, null, 2));
+            console.log(`Member ${socket.userName} left.`);
+        }
     })
 })
 
