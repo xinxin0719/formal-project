@@ -17,7 +17,16 @@ if (!fileContent.trim()) {
 }
 
 io.on('connection', (socket) => {
-    console.log('response');
+
+    if (socket.handshake.query.page !== '/') {
+        socket.on('uploadUserName', (userName) => {
+            socket.userName = userName;
+            console.log('A client sign up as '+ socket.userName + '.');
+        })
+    } else {
+        console.log('New client joined in.');
+    }
+
     socket.on('nameInput', (name) => {
         let users = JSON.parse(fs.readFileSync(fileUrl, 'utf-8'));
         let user = users.find(item => item.name === name);
@@ -27,11 +36,13 @@ io.on('connection', (socket) => {
             users.push({ name: name});
             fs.writeFileSync(fileUrl, JSON.stringify(users, null, 2))
         }
-        console.log(name);
     })
 
     socket.on('disconnect', () => {
-        console.log('left');
+        let users = JSON.parse(fs.readFileSync(fileUrl, 'utf-8'));
+        let user = users.filter(item => item.name !== socket.userName);
+        fs.writeFileSync(fileUrl, JSON.stringify(user, null, 2));
+        console.log(`Member ${socket.userName} left.`);
     })
 })
 
