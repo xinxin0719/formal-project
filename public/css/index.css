@@ -21,20 +21,33 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    flex-direction: column;
 }
 
-.main > * {
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 62%;
+    position: relative;
+}
+
+.input > * {
     box-sizing: border-box;
-    height: 35%;
+    height: 100%;
+}
+
+.name {
+    flex: 1618;
+}
+
+.submit {
+    flex: 1000;
 }
 
 .uid {
     width: 60%;
-}
-
-.submit {
-    width: 20%;
-    font-size: 80%;
 }
 
 .main:hover {

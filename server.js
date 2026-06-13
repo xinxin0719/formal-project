@@ -30,9 +30,14 @@ io.on('connection', (socket) => {
     socket.on('nameInput', (name) => {
         let users = JSON.parse(fs.readFileSync(fileUrl, 'utf-8'));
         let user = users.find(item => item.name === name);
-        if (!user) {
-            users.push({ name: name});
-            fs.writeFileSync(fileUrl, JSON.stringify(users, null, 2))
+        if (user) {
+            console.log(name);
+            socket.emit('nameRepeat');
+        } else {
+            users.push({ name: name });
+            fs.writeFileSync(fileUrl, JSON.stringify(users, null, 2));
+            socket.userName = name;
+            socket.emit('nameAvailable', socket.userName);
         }
     })
 
